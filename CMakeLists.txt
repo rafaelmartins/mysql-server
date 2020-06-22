@@ -651,7 +651,9 @@ ENDFOREACH()
 # Following autotools tradition, add preprocessor definitions
 # specified in environment variable CPPFLAGS
 IF(DEFINED ENV{CPPFLAGS})
-  ADD_DEFINITIONS($ENV{CPPFLAGS})
+  SET(CPPFLAGS $ENV{CPPFLAGS})
+  SEPARATE_ARGUMENTS(CPPFLAGS)
+  ADD_COMPILE_OPTIONS(${CPPFLAGS})
 ENDIF()
 
 INCLUDE(CheckTypeSize)
